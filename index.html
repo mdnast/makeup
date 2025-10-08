@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Huyền Trang - Makeup Artist Chuyên Nghiệp</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS NÂNG CẤP */
+
+        :root {
+            --primary-color: #d63384; /* Màu hồng chủ đạo */
+            --secondary-color: #333; /* Màu chữ chính */
+            --background-color: #fff;
+            --light-gray: #f8f9fa;
+            --font-heading: 'Playfair Display', serif; /* Font cho tiêu đề */
+            --font-body: 'Quicksand', sans-serif; /* Font cho nội dung */
+        }
+
+        body {
+            font-family: var(--font-body);
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--secondary-color);
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 1140px;
+            margin: auto;
+            padding: 0 20px;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-heading);
+            color: var(--primary-color);
+        }
+        
+        h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        /* --- Header & Navigation --- */
+        header {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        nav ul { list-style: none; margin: 0; padding: 0; display: flex; }
+        nav ul li { margin-left: 30px; }
+        nav ul li a { text-decoration: none; color: #555; font-weight: 700; transition: color 0.3s; }
+        nav ul li a:hover { color: var(--primary-color); }
+
+        /* --- Hero Section --- */
+        #hero {
+            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://via.placeholder.com/1500x800.png?text=Ảnh+Makeup+Đẹp+Nhất');
+            height: 90vh;
+            background-size: cover; background-position: center;
+            display: flex; justify-content: center; align-items: center;
+            text-align: center; color: white;
+        }
+        #hero h1 { font-size: 4rem; color: white; }
+        #hero p { font-size: 1.2rem; font-weight: 500; }
+        
+        /* --- MỤC MỚI: Giới Thiệu --- */
+        #about { background-color: var(--light-gray); }
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        .about-image img {
+            width: 350px;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 50%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .about-text { flex: 1; }
+
+        /* --- Portfolio Section --- */
+        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+        .portfolio-item { position: relative; overflow: hidden; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .portfolio-item img { width: 100%; display: block; transition: transform 0.4s ease; }
+        .portfolio-item:hover img { transform: scale(1.1); }
+
+        /* --- Services Section --- */
+        #services { background-color: var(--light-gray); }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .service-card {
+            background-color: white; padding: 30px; border-radius: 12px;
+            text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .service-card:hover { transform: translateY(-10px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .service-card h3 { margin-top: 0; }
+        .service-card .price { font-weight: 700; color: var(--primary-color); font-size: 1.2rem; }
+
+        /* --- MỤC MỚI: Đánh giá của khách hàng --- */
+        .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .testimonial-card {
+            background-color: var(--light-gray); padding: 25px; border-radius: 12px; border: 1px solid #eee;
+        }
+        .testimonial-card p { font-style: italic; }
+        .testimonial-card .author { font-weight: bold; text-align: right; color: var(--primary-color); }
+
+        /* --- Contact Section --- */
+        .contact-buttons { text-align: center; margin-top: 40px; }
+        .contact-btn {
+            display: inline-block; padding: 15px 30px; margin: 10px; border-radius: 50px;
+            text-decoration: none; color: white; font-weight: bold; font-size: 16px;
+            transition: all 0.3s ease; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .contact-btn:hover { transform: translateY(-5px); box-shadow: 0 6px 15px rgba(0,0,0,0.2); }
+        .btn-phone { background-color: #28a745; }
+        .btn-zalo { background-color: #0068ff; }
+        .btn-messenger { background-color: #006AFF; } /* Màu xanh của Messenger */
+        .btn-instagram { background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); }
+
+        /* --- Footer --- */
+        footer { background-color: var(--secondary-color); color: white; text-align: center; padding: 40px 0; }
+        footer a { color: white; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">Huyền Trang</div>
+            <nav>
+                <ul>
+                    <li><a href="#hero">Trang Chủ</a></li>
+                    <li><a href="#about">Giới Thiệu</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#services">Dịch Vụ</a></li>
+                    <li><a href="#contact">Liên Hệ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="hero-text">
+                <h1>Huyền Trang Makeup</h1>
+                <p>Nơi vẻ đẹp thăng hoa cùng nghệ thuật.</p>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                <h2>Về Huyền Trang</h2>
+                <div class="about-content">
+                    <div class="about-image">
+                        <img src="https://scontent.fhan20-1.fna.fbcdn.net/v/t39.30808-6/524662634_1273858804294402_3405362795640899085_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeF_0LIFjQnuJJhXTHrZ22X8sXXiyiBA1X6xdeLKIEDVfo846cG-eapMIlQjUdMROb0E8QJQJ1CuBKYCRlSUfO4h&_nc_ohc=dplEBW8quaMQ7kNvwHs2B5T&_nc_oc=AdkQOjpv6UtDpHLSB0dv9udlaoqbU3wccdOoxx6RqjoHkHTJ_R4c5t_Z7XwetPl0i84&_nc_zt=23&_nc_ht=scontent.fhan20-1.fna&_nc_gid=abHeh8PvLZPcT_owS29Fjg&oh=00_AfeS1uTSo-nodbpjUx2iByQAH9wKOXvyDF7t8lZXBRQpRg&oe=68EBDC68" alt="Ảnh chân dung Huyền Trang">
+                    </div>
+                    <div class="about-text">
+                        <h3>Đam mê tạo nên sự khác biệt</h3>
+                        <p>Xin chào! Tôi là Huyền Trang, một nghệ sĩ trang điểm chuyên nghiệp tại Hà Nội với hơn 5 năm kinh nghiệm. Đối với tôi, trang điểm không chỉ là công việc, mà là niềm đam mê biến hóa, tôn vinh những nét đẹp riêng biệt của mỗi người phụ nữ.</p>
+                        <p>Phong cách của tôi hướng tới vẻ đẹp tự nhiên, trong trẻo nhưng không kém phần sắc sảo và hiện đại. Tôi luôn cập nhật những xu hướng mới nhất và sử dụng những sản phẩm cao cấp để đảm bảo khách hàng có được vẻ ngoài hoàn hảo và tự tin nhất.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="portfolio" class="container">
+            <h2>Portfolio - Tác Phẩm Nổi Bật</h2>
+            <div class="portfolio-grid">
+                 <div class="portfolio-item"><img src="https://scontent.fhan20-1.fna.fbcdn.net/v/t39.30808-6/537248286_1295951398751809_8965103445939054554_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeETYdDOqajroU0TxiMO02gjJIJMZmXtXb4kgkxmZe1dvsYDbQmSaEq64u0NnSLtGPw91g7_JrnVQig-bEPBNrl7&_nc_ohc=un8XKw-zcnIQ7kNvwGq6Qnl&_nc_oc=AdkGJdsUy5F5IjLjCJmZ6LE0pVcTx8kiHRIwbYGfaheQBz7V3-x-FKW1jjbH3kPM74k&_nc_zt=23&_nc_ht=scontent.fhan20-1.fna&_nc_gid=4qYVIjGJo9B58Dh7o2n-0w&oh=00_Afcvm4RA6gz1_K4VJJHBzwgYRGnKrx-IaFeHbBjuWgk2eQ&oe=68EBE996" alt="Ảnh makeup 1"></div>
+                <div class="portfolio-item"><img src="https://scontent.fhan20-1.fna.fbcdn.net/v/t39.30808-6/551773887_1319881516358797_4366181268828254834_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=103&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeHdyA83jBj2hvhfKQiDC4uAcEdK4FioDK5wR0rgWKgMrrieumINXWIQ3hQCtEdcGok0Vmn4qw5J1B0XWr0UJs-I&_nc_ohc=qE8QS5ukgAMQ7kNvwF6rGQc&_nc_oc=Adm04DVzUylSL_yubf2YM4jLGK74QU13NorBdTS088C21-cZiLmtXl19Z58iOoVo42M&_nc_zt=23&_nc_ht=scontent.fhan20-1.fna&_nc_gid=tE6G5P2lkNMVYO0s9HlpJA&oh=00_Afcg_pTjPvY8-jvXbRKDrRJDl9XbruiSV5swj-Ng_0uHcA&oe=68EBCA74" alt="Ảnh makeup 2"></div>
+                <div class="portfolio-item"><img src="https://scontent.fhan2-5.fna.fbcdn.net/v/t39.30808-6/518279625_1264986175181665_3730099891166375619_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeFXQcMOlL4ZvoO3NfYiVbon5dQ9GXOaGJPl1D0Zc5oYkwCV80l42WZDXt2SEgnp4SljyRIXWeOGGyQtExX5U6Pq&_nc_ohc=JqoFmrT9LQgQ7kNvwERPyqe&_nc_oc=AdmYvkyqPNcRLvB2WdMOFyMNTEF-csA9XAZ4OSs2VUhKG3mCR6MIhUXK_dbIr1G5Ugc&_nc_zt=23&_nc_ht=scontent.fhan2-5.fna&_nc_gid=9v78vF_qDO_8nyq5nknCIg&oh=00_AfeysUv1v9Az3-OOMEunV-I16bJVh-qV7VrHTkyYvsHqlA&oe=68EBC183" alt="Ảnh makeup 3"></div>
+                <div class="portfolio-item"><img src="https://scontent.fhan20-1.fna.fbcdn.net/v/t39.30808-6/522888260_1271100897903526_4644018703212379148_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeFf4OP6rbjzgisiQrZWgn2HpAamWkmylyGkBqZaSbKXIVpZ3htRpBOavDGoQZJ9QigENBTBekejdPxjEzKtf-SD&_nc_ohc=KIULybFWnLgQ7kNvwFVF6qd&_nc_oc=AdnQioZ1k3emW_PeMOBEI-Ua4sruULJCxtf9EfDKQCwACJ2p-iLYr9oMVx1ozWu7XIk&_nc_zt=23&_nc_ht=scontent.fhan20-1.fna&_nc_gid=rx02BWSf7dOmIOM4aCGMgQ&oh=00_AfemcErVPqh3Z0TQYPa5O7Y5oFFouTXfR78CCfrJQZl6dg&oe=68EBD626" alt="Ảnh makeup 4"></div>
+                <div class="portfolio-item"><img src="https://scontent.fhan2-5.fna.fbcdn.net/v/t39.30808-6/532439742_1288612692819013_6194190049487222587_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeGLc2vsyT6r85AY0lPPvbK0qwaZ4Nqxh-GrBpng2rGH4Zq60xHTFwzqcijMifFPDnkwrVAe9T61JDh0TRFj2vop&_nc_ohc=aZcp4ggVgIQQ7kNvwFaHxI2&_nc_oc=AdmTZCGObhmnFJXCzhRsRfT0XSJ0tQOq2JxId7wndqSzDGKgTNYLfjnaOaLcsa7cEdw&_nc_zt=23&_nc_ht=scontent.fhan2-5.fna&_nc_gid=Uoe-qdRR2-63FpcMXKInZA&oh=00_AfdBQIbpL8YEBGOBDlE921w8VDqPbj82lSEpgagLAibbTQ&oe=68EBB518" alt="Ảnh makeup 5"></div>
+                <div class="portfolio-item"><img src="https://scontent.fhan20-1.fna.fbcdn.net/v/t39.30808-6/557609291_4293208604288753_8742115596693889525_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeGSTXs3kmpuEBQbnZRuKed1l7-IQYQHdZSXv4hBhAd1lA2lHrai3p9UL6QJHA6smphNKKsaQZMtuXBgS2lNtwyc&_nc_ohc=Gehs4ivtQNEQ7kNvwHRuIxC&_nc_oc=AdnQqTT3yJjhDWnq4hOZkOgzn4EtCNHk-WEqQ2BKqV73m13irYQD0voRaCjLjaD73t4&_nc_zt=23&_nc_ht=scontent.fhan20-1.fna&_nc_gid=gxFJiSkjtCwxwvz0dBwUPw&oh=00_AffsPECRojiYxaH5Ys3gwed7aB7-olgVo996PGb6d8MyGQ&oe=68EBE3CA" alt="Ảnh makeup 6"></div>
+            </div>
+        </section>
+        
+        <section id="services">
+            <div class="container">
+                <h2>Các Gói Dịch Vụ</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h3>Trang điểm Cô dâu</h3>
+                        <p>Bao gồm 1 lần trang điểm thử và 1 lần trang điểm chính thức. Tư vấn layout phù hợp với váy cưới và concept.</p>
+                        <p class="price">Giá từ: 1.000.000 VNĐ</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>Trang điểm Dự tiệc</h3>
+                        <p>Layout đa dạng từ nhẹ nhàng Hàn Quốc đến sắc sảo Âu Mỹ, phù hợp cho mọi sự kiện quan trọng.</p>
+                        <p class="price">Giá từ: 400.000 VNĐ</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>Lớp Makeup Cá nhân</h3>
+                        <p>Khóa học 1 kèm 1, giúp bạn hiểu rõ gương mặt và tự tin trang điểm với dụng cụ có sẵn.</p>
+                        <p class="price">Giá từ: 5.000.000 VNĐ</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials" class="container">
+            <h2>Khách Hàng Nói Gì?</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p>"Chị Trang siêu có tâm và nhiệt tình. Lớp makeup rất tự nhiên, nhẹ nhàng mà vẫn xinh lung linh. Mình rất ưng ý!"</p>
+                    <p class="author">- Minh Anh, Hà Nội</p>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Cảm ơn chị đã giúp em trở thành cô dâu xinh đẹp nhất. Mọi người ai cũng khen. Chắc chắn sẽ giới thiệu bạn bè cho chị."</p>
+                    <p class="author">- Thuỳ Linh, Cô dâu</p>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Tay nghề chị Trang đỉnh thật sự. Make up xong nhìn khác hẳn, sang và tây hơn rất nhiều. Sẽ ủng hộ chị dài dài."</p>
+                    <p class="author">- Phương Chi, Khách dự tiệc</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+             <div class="container">
+                <h2>Liên Hệ Đặt Lịch</h2>
+                <p style="text-align: center;">Đừng ngần ngại liên hệ để được tư vấn layout phù hợp nhất cho ngày trọng đại của bạn!</p>
+                <div class="contact-buttons">
+                    <a href="tel:0335216613" class="contact-btn btn-phone">📞 Gọi Trực Tiếp</a>
+                    <a href="https://zalo.me/0335216613" target="_blank" class="contact-btn btn-zalo">💬 Nhắn Tin Zalo</a>
+                    <a href="https://m.me/huyen.trang.742916" target="_blank" class="contact-btn btn-messenger">💬 Nhắn Tin Facebook</a>
+                    <a href="https://www.instagram.com/dbshtr.nag/" target="_blank" class="contact-btn btn-instagram">📸 Nhắn Tin Instagram</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Huyền Trang Makeup Artist. Thiết kế với ❤️</p>
+            <p>Sống tại Hà Nội, Việt Nam</p>
+        </div>
+    </footer>
+
+</body>
+</html>
