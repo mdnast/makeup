@@ -9,9 +9,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     
+    <link rel="manifest" href="manifest.json">
+    
     <style>
         /* CSS NÂNG CẤP */
-
         :root {
             --primary-color: #d63384; /* Màu hồng chủ đạo */
             --secondary-color: #333; /* Màu chữ chính */
@@ -19,6 +20,10 @@
             --light-gray: #f8f9fa;
             --font-heading: 'Playfair Display', serif; /* Font cho tiêu đề */
             --font-body: 'Quicksand', sans-serif; /* Font cho nội dung */
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
@@ -82,8 +87,9 @@
 
         /* --- Hero Section --- */
         #hero {
-            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://via.placeholder.com/1500x800.png?text=Ảnh+Makeup+Đẹp+Nhất');
+            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://scontent.fhan2-5.fna.fbcdn.net/v/t39.30808-6/515260813_1255344432812506_964166133360348338_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeGArwOHK9wqy7-tfs_EXiNlNUXLlKJRHcg1RcuUolEdyAzP8TizLGok0N-HOTS2Al9cIfhVHm9WLlpa8kFyDkYC&_nc_ohc=TgPnGVY1AkMQ7kNvwGM0EDY&_nc_oc=Adl48euYOtGe3VJaZnZRZJB5Vr96P3bXS3YbrCyfo-b_3BXpMjc3ofQQtKTWrpAwsdg&_nc_zt=23&_nc_ht=scontent.fhan2-5.fna&_nc_gid=u5lZB9MaNz17I310-uagyA&oh=00_Aff-0bu82gCPskRgcZAj5-aOlaJ43tDH0i7Mf8ZSisb_Zg&oe=68EBE218');
             height: 90vh;
+            background-attachment: fixed;
             background-size: cover; background-position: center;
             display: flex; justify-content: center; align-items: center;
             text-align: center; color: white;
@@ -91,12 +97,17 @@
         #hero h1 { font-size: 4rem; color: white; }
         #hero p { font-size: 1.2rem; font-weight: 500; }
         
-        /* --- MỤC MỚI: Giới Thiệu --- */
+        /* --- About Section --- */
         #about { background-color: var(--light-gray); }
         .about-content {
             display: flex;
             align-items: center;
             gap: 50px;
+            flex-wrap: wrap;
+        }
+        .about-image {
+            flex-basis: 350px;
+            text-align: center;
         }
         .about-image img {
             width: 350px;
@@ -105,12 +116,12 @@
             border-radius: 50%;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
-        .about-text { flex: 1; }
+        .about-text { flex: 1; min-width: 300px; }
 
         /* --- Portfolio Section --- */
         .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
         .portfolio-item { position: relative; overflow: hidden; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-        .portfolio-item img { width: 100%; display: block; transition: transform 0.4s ease; }
+        .portfolio-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
         .portfolio-item:hover img { transform: scale(1.1); }
 
         /* --- Services Section --- */
@@ -125,7 +136,7 @@
         .service-card h3 { margin-top: 0; }
         .service-card .price { font-weight: 700; color: var(--primary-color); font-size: 1.2rem; }
 
-        /* --- MỤC MỚI: Đánh giá của khách hàng --- */
+        /* --- Testimonials Section --- */
         .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .testimonial-card {
             background-color: var(--light-gray); padding: 25px; border-radius: 12px; border: 1px solid #eee;
@@ -143,12 +154,20 @@
         .contact-btn:hover { transform: translateY(-5px); box-shadow: 0 6px 15px rgba(0,0,0,0.2); }
         .btn-phone { background-color: #28a745; }
         .btn-zalo { background-color: #0068ff; }
-        .btn-messenger { background-color: #006AFF; } /* Màu xanh của Messenger */
+        .btn-messenger { background-color: #006AFF; }
         .btn-instagram { background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); }
 
         /* --- Footer --- */
         footer { background-color: var(--secondary-color); color: white; text-align: center; padding: 40px 0; }
         footer a { color: white; }
+        
+        /* Responsive cho di động */
+        @media (max-width: 768px) {
+            nav ul { display: none; } /* Tạm thời ẩn menu trên di động cho đơn giản */
+            #hero h1 { font-size: 2.5rem; }
+            .about-content { flex-direction: column; }
+            .about-image img { width: 250px; height: 250px; }
+        }
     </style>
 </head>
 <body>
@@ -194,7 +213,7 @@
         <section id="portfolio" class="container">
             <h2>Portfolio - Tác Phẩm Nổi Bật</h2>
             <div class="portfolio-grid">
-                 <div class="portfolio-item"><img src="https://scontent.fhan20-1.fna.fbcdn.net/v/t39.30808-6/537248286_1295951398751809_8965103445939054554_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeETYdDOqajroU0TxiMO02gjJIJMZmXtXb4kgkxmZe1dvsYDbQmSaEq64u0NnSLtGPw91g7_JrnVQig-bEPBNrl7&_nc_ohc=un8XKw-zcnIQ7kNvwGq6Qnl&_nc_oc=AdkGJdsUy5F5IjLjCJmZ6LE0pVcTx8kiHRIwbYGfaheQBz7V3-x-FKW1jjbH3kPM74k&_nc_zt=23&_nc_ht=scontent.fhan20-1.fna&_nc_gid=4qYVIjGJo9B58Dh7o2n-0w&oh=00_Afcvm4RA6gz1_K4VJJHBzwgYRGnKrx-IaFeHbBjuWgk2eQ&oe=68EBE996" alt="Ảnh makeup 1"></div>
+                <div class="portfolio-item"><img src="https://scontent.fhan20-1.fna.fbcdn.net/v/t39.30808-6/537248286_1295951398751809_8965103445939054554_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeETYdDOqajroU0TxiMO02gjJIJMZmXtXb4kgkxmZe1dvsYDbQmSaEq64u0NnSLtGPw91g7_JrnVQig-bEPBNrl7&_nc_ohc=un8XKw-zcnIQ7kNvwGq6Qnl&_nc_oc=AdkGJdsUy5F5IjLjCJmZ6LE0pVcTx8kiHRIwbYGfaheQBz7V3-x-FKW1jjbH3kPM74k&_nc_zt=23&_nc_ht=scontent.fhan20-1.fna&_nc_gid=4qYVIjGJo9B58Dh7o2n-0w&oh=00_Afcvm4RA6gz1_K4VJJHBzwgYRGnKrx-IaFeHbBjuWgk2eQ&oe=68EBE996" alt="Ảnh makeup 1"></div>
                 <div class="portfolio-item"><img src="https://scontent.fhan20-1.fna.fbcdn.net/v/t39.30808-6/551773887_1319881516358797_4366181268828254834_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=103&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeHdyA83jBj2hvhfKQiDC4uAcEdK4FioDK5wR0rgWKgMrrieumINXWIQ3hQCtEdcGok0Vmn4qw5J1B0XWr0UJs-I&_nc_ohc=qE8QS5ukgAMQ7kNvwF6rGQc&_nc_oc=Adm04DVzUylSL_yubf2YM4jLGK74QU13NorBdTS088C21-cZiLmtXl19Z58iOoVo42M&_nc_zt=23&_nc_ht=scontent.fhan20-1.fna&_nc_gid=tE6G5P2lkNMVYO0s9HlpJA&oh=00_Afcg_pTjPvY8-jvXbRKDrRJDl9XbruiSV5swj-Ng_0uHcA&oe=68EBCA74" alt="Ảnh makeup 2"></div>
                 <div class="portfolio-item"><img src="https://scontent.fhan2-5.fna.fbcdn.net/v/t39.30808-6/518279625_1264986175181665_3730099891166375619_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeFXQcMOlL4ZvoO3NfYiVbon5dQ9GXOaGJPl1D0Zc5oYkwCV80l42WZDXt2SEgnp4SljyRIXWeOGGyQtExX5U6Pq&_nc_ohc=JqoFmrT9LQgQ7kNvwERPyqe&_nc_oc=AdmYvkyqPNcRLvB2WdMOFyMNTEF-csA9XAZ4OSs2VUhKG3mCR6MIhUXK_dbIr1G5Ugc&_nc_zt=23&_nc_ht=scontent.fhan2-5.fna&_nc_gid=9v78vF_qDO_8nyq5nknCIg&oh=00_AfeysUv1v9Az3-OOMEunV-I16bJVh-qV7VrHTkyYvsHqlA&oe=68EBC183" alt="Ảnh makeup 3"></div>
                 <div class="portfolio-item"><img src="https://scontent.fhan20-1.fna.fbcdn.net/v/t39.30808-6/522888260_1271100897903526_4644018703212379148_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeFf4OP6rbjzgisiQrZWgn2HpAamWkmylyGkBqZaSbKXIVpZ3htRpBOavDGoQZJ9QigENBTBekejdPxjEzKtf-SD&_nc_ohc=KIULybFWnLgQ7kNvwFVF6qd&_nc_oc=AdnQioZ1k3emW_PeMOBEI-Ua4sruULJCxtf9EfDKQCwACJ2p-iLYr9oMVx1ozWu7XIk&_nc_zt=23&_nc_ht=scontent.fhan20-1.fna&_nc_gid=rx02BWSf7dOmIOM4aCGMgQ&oh=00_AfemcErVPqh3Z0TQYPa5O7Y5oFFouTXfR78CCfrJQZl6dg&oe=68EBD626" alt="Ảnh makeup 4"></div>
@@ -264,6 +283,18 @@
             <p>Sống tại Hà Nội, Việt Nam</p>
         </div>
     </footer>
-
+    
+    <script>
+        // Script để đăng ký Service Worker cho ứng dụng PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').then(registration => {
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                }, err => {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+            });
+        }
+    </script>
 </body>
 </html>
